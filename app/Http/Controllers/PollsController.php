@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Poll;
-use http\Env\Response;
+use App\Http\Resources\Poll as PollResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +31,8 @@ class PollsController extends Controller
             return response()->json(null, 404);
         }
 
-        return response()->json($poll, 200);
+        $response = new PollResource($poll);
+        return response()->json($response, 200);
     }
 
     /**
