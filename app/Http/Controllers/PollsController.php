@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Poll;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
@@ -24,7 +25,12 @@ class PollsController extends Controller
      */
     public function show($id)
     {
-        return response()->json(Poll::find($id), 200);
+        $poll = Poll::find($id);
+        if (is_null($poll)) {
+            return response()->json(null, 404);
+        }
+
+        return response()->json($poll, 200);
     }
 
     /**
