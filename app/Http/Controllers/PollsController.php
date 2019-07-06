@@ -37,4 +37,16 @@ class PollsController extends Controller
         $poll = Poll::create($request->all());
         return response()->json($poll, 201);
     }
+
+    /**
+     * update a record
+     * @param Request $request
+     * @param Poll $poll
+     * @return JsonResponse
+     */
+    public function update(Request $request, Poll $poll)
+    {
+        $poll->update($request->all());
+        return response()->json($poll, 200);
+    }
 }
