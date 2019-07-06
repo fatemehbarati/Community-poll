@@ -49,4 +49,17 @@ class PollsController extends Controller
         $poll->update($request->all());
         return response()->json($poll, 200);
     }
+
+    /**
+     * delete a record
+     * @param Request $request
+     * @param Poll $poll
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function delete(Request $request, Poll $poll)
+    {
+        $poll->delete();
+        return response()->json(null, 204);
+    }
 }
