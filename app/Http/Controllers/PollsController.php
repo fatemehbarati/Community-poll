@@ -78,4 +78,9 @@ class PollsController extends Controller
         $poll->delete();
         return response()->json(null, 204);
     }
+
+    public function questions(Poll $poll)
+    {
+        return response()->json($poll->questions, 200);
+    }
 }
