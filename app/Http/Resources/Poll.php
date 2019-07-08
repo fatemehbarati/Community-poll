@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class Poll extends JsonResource
 {
@@ -14,8 +15,6 @@ class Poll extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'title' => mb_strimwidth($this->title, 0, 10, '...')
-        ];
+        return parent::toArray($request);
     }
 }
