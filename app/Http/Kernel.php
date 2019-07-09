@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\HttpHeaders;
 use App\Http\Middleware\Logging;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -42,6 +43,7 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
             Logging::class,
+            'HttpHeaders:Come With US!',
         ],
     ];
 
@@ -62,6 +64,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'HttpHeaders' => HttpHeaders::class,
     ];
 
     /**
